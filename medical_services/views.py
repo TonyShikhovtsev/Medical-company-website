@@ -15,3 +15,20 @@ def services(request):
         'title': 'Наши услуги'
     }
     return render(request, 'medical_services/services.html', context)
+
+
+def about_us(request):
+    return render(request, 'medical_services/about_us.html')
+
+
+def contacts(request):
+    return render(request, 'medical_services/contacts.html')
+
+def service(request):
+    return render(request, 'medical_services/service.html')
+
+def medical_consultation(request):
+    return render(request, 'medical_services/medical_consultation.html')
+
+def privacy_policy(request):
+    return render(request, 'medical_services/privacy_policy.html')
