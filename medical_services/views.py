@@ -22,10 +22,12 @@ def about_us(request):
 
 
 def contacts(request):
+
     return render(request, 'medical_services/contacts.html')
 
-def service(request):
-    return render(request, 'medical_services/service.html')
+def service_detail(request, service_id):
+    medical_service = Medical_service.objects.get(pk=service_id)
+    return render(request, 'medical_services/service.html', {'medical_service': medical_service})
 
 def medical_consultation(request):
     return render(request, 'medical_services/medical_consultation.html')

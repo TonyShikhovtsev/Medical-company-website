@@ -4,8 +4,23 @@
   <main role="main">
     <section class="jumbotron text-center">
       <div class="container">
-        <h1 class="jumbotron-heading">Product</h1>
+        <h1 class="jumbotron-heading">{{ medical_service.name }}</h1>
       </div>
     </section>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <div class="card-body">
+              <p class="card-text">{{ medical_service.short_name }}</p>
+              <p class="card-text">{{ medical_service.description }}</p>
+              <p class="card-text">{{ medical_service.price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
 {% endblock %}
