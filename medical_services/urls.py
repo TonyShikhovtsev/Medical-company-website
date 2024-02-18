@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 
 from . import views
@@ -16,4 +18,4 @@ urlpatterns = [
     path('medical_consultation/', medical_consultation, name='medical_consultation'),
     path('privacy_policy/', privacy_policy, name='privacy_policy'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

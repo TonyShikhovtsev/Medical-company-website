@@ -1,21 +1,22 @@
 {% extends 'medical_services/base.html' %}
+{% load static %}
 
 {% block content %}
   <main role="main">
     <section class="jumbotron text-center">
-      <div class="container">
+      <div class="container-fluid">
         <h1 class="jumbotron-heading">{{ medical_service.name }}</h1>
       </div>
     </section>
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
+          <img class="card-img-top w-100" src="{% if medical_service.image %}{{ medical_service.image.url }}{% else %}{% static 'path/to/placeholder-image.jpg' %}{% endif %}" alt="{{ medical_service.name }}">
           <div class="card mb-4 box-shadow">
             <div class="card-body">
-              <p class="card-text">{{ medical_service.short_name }}</p>
               <p class="card-text">{{ medical_service.description }}</p>
-              <p class="card-text">{{ medical_service.price }}</p>
+              <p class="card-text"> Стоимость услуги: {{ medical_service.price }} рублей</p>
             </div>
           </div>
         </div>
