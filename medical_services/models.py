@@ -16,3 +16,4 @@ class Medical_service(models.Model):
     class Meta:
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
+

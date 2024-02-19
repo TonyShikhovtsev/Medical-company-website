@@ -1,0 +1,51 @@
+  {% extends 'medical_services/base.html' %}
+
+  {% block content %}
+    <main role="main">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Medical Consultation</h1>
+        </div>
+      </section>
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="card mb-4 box-shadow">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Свяжитесь с нами</h4>
+              </div>
+              <div class="card-body">
+                {# Вывод сообщений об успешной отправке формы #}
+                {% if messages %}
+                  <ul class="messages">
+                    {% for message in messages %}
+                      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+
+                <form method="post" action="{% url 'feedback:feedback' %}" class="form-floating">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <label for="name">Имя</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone">Телефон</label>
+                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Контактный телефон" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="message">Сообщение</label>
+                    <textarea name="message" class="form-control" id="message" placeholder="Сообщение" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Отправить</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  {% endblock %}
