@@ -2,27 +2,30 @@
 {% load static %}
 
 {% block content %}
-  <main role="main">
-    <section class="jumbotron text-center">
-      <div class="container-fluid">
-        <h1 class="jumbotron-heading">{{ medical_service.name }}</h1>
-      </div>
-    </section>
-
+<main role="main">
+  <section class="jumbotron text-center">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <img class="card-img-top w-100" src="{% if medical_service.image %}{{ medical_service.image.url }}{% else %}{% static 'path/to/placeholder-image.jpg' %}{% endif %}" alt="{{ medical_service.name }}">
-          <div class="card mb-4 box-shadow">
-            <div class="card-body">
-              <p class="card-text">{{ medical_service.description }}</p>
-              <p class="card-text"> Стоимость услуги: {{ medical_service.price }} рублей</p>
-              <p class="card-text"> Записаться на прием: +7 (351) 235-03-03</p>
-            </div>
+      <h1 class="jumbotron-heading">{{ medical_service.name }}</h1>
+    </div>
+  </section>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <img class="card-img-top w-100" src="{% if medical_service.image %}{{ medical_service.image.url }}{% else %}{% static 'path/to/placeholder-image.jpg' %}{% endif %}" alt="{{ medical_service.name }}">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <p class="card-text">{{ medical_service.description }}</p>
+            <p class="card-text"> Стоимость услуги: {{ medical_service.price }} рублей</p>
+            <p class="card-text"> Записаться на прием: +7 (351) 235-03-03</p>
+            <form method="post" action="{% url 'feedback:feedback' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Оставить заявку при прием</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-
-  </main>
+  </div>
+</main>
 {% endblock %}
