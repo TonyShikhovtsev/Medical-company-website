@@ -9,7 +9,8 @@ def feedback_view(request):
         form = FeedbackForm(request.POST)
         if form.is_valid():
             message = form.save(commit=False)
-            message.user = request.user
+            if request.user.is_authenticated:
+                message.user = request.user
             message.save()
 
             # Добавляем сообщение об успешной отправке формы
